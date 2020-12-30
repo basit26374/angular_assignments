@@ -6,24 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  showSecret = false;
+  log = [];
 
-  toggle:boolean = false
-  click_times:number = 0
-  logs:number[] = []
-
-  constructor() {
-  }
-
-  ontoggle() {
-    this.toggle = !this.toggle
-    this.click_times = this.click_times + 1
-    console.log(this.click_times)
-    this.logs.push(this.click_times)
-  }
-
-  getColor(value) {
-    if (value >= 5) {
-      return 'lightblue'
-    }
+  onToggleDetails() {
+    this.showSecret = !this.showSecret;
+    this.log.push(this.log.length + 1);
   }
 }
