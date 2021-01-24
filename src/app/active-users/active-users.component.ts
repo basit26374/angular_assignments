@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { UserStatusServiceService } from '../user-status-service.service';
 
 @Component({
   selector: 'app-active-users',
@@ -7,9 +8,14 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class ActiveUsersComponent {
   @Input() users: string[];
-  @Output() userSetToInactive = new EventEmitter<number>();
+  @Input() count: number;
+  // @Output() userSetToInactive = new EventEmitter<number>();
+
+  constructor(private userStatusService: UserStatusServiceService) {}
 
   onSetToInactive(id: number) {
-    this.userSetToInactive.emit(id);
+    // this.userSetToInactive.emit(id);
+    this.userStatusService.onSetToInactive(id);
+    // console.log('active ', this.count);
   }
 }

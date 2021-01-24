@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UserStatusServiceService } from './user-status-service.service';
 
 @Component({
   selector: 'app-root',
@@ -6,16 +7,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  activeUsers = ['Max', 'Anna'];
-  inactiveUsers = ['Chris', 'Manu'];
+  activeUsers = [];
+  inactiveUsers = [];
+  activeCount:number;
+  inactiveCount:number;
 
-  onSetToInactive(id: number) {
-    this.inactiveUsers.push(this.activeUsers[id]);
-    this.activeUsers.splice(id, 1);
-  }
+  constructor(private userStatusService: UserStatusServiceService) {}
 
-  onSetToActive(id: number) {
-    this.activeUsers.push(this.inactiveUsers[id]);
-    this.inactiveUsers.splice(id, 1);
+  ngOnInit() {
+    this.activeUsers = this.userStatusService.activeUsers;
+    this.inactiveUsers = this.userStatusService.inactiveUsers;
+    this.activeCount = this.userStatusService.activeCount;
+    this.inactiveCount = this.userStatusService.inactiveCount;
   }
 }
