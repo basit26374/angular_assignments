@@ -11,12 +11,11 @@ export class StatusCountService {
 
   countActive() {
     this.numOfActiveCount++;
-    // console.log("Active counts : ", this.numOfActiveCount);
-    return 4;
+    console.log("Active counts : ", this.numOfActiveCount);
   }
 
   countInactive() {
     this.numOfInactiveCount++;
-    return this.numOfInactiveCount
+    console.log("Inactive counts : ", this.numOfInactiveCount)
   }
 }
